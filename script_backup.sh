@@ -1,12 +1,12 @@
 #!/bin/bash
 # set Data
-PASS=${1?Error: no pass}
-USER=${2?Error: no user}
-SERVER=${3?Error: no ip server}
+#PASS=${1?Error: no pass}
+#USER=${2?Error: no user}
+#SERVER=${3?Error: no ip server}
 
 # current directory
-CURDIR=$(pwd)
-DESTDIR="/home/ubuntu/docker/taigademo"
+#CURDIR=$(pwd)
+#DESTDIR="/home/ubuntu/docker/taigademo"
 
 # config mysql server
 #DBUSER=""
@@ -14,32 +14,41 @@ DESTDIR="/home/ubuntu/docker/taigademo"
 #DATABASE=database-$(date +%-Y%-m%-d)+$(date +%-T).sql
 
 # clone sshpass latest version
-wget http://sourceforge.net/projects/sshpass/files/latest/download -O sshpass.tar.gz
+#wget http://sourceforge.net/projects/sshpass/files/latest/download -O sshpass.tar.gz
 # untar sshpass
-tar -xvf sshpass.tar.gz
+#tar -xvf sshpass.tar.gz
 # go sshpass
-cd sshpass-1.06
+#cd sshpass-1.06
 # configure sshpass, prepration install sshpass
-./configure
+#./configure
 # install sshpass
-make install
+#make install
 # uninstall sshpass
 #make uninstall
 # remove folder and tar sshpass
-rm -rf ../sshpass.tar.gz ../sshpass-1.06
+#rm -rf ../sshpass.tar.gz ../sshpass-1.06
 
 # autologin with sshpass
-sshpass -p $PASS scp -r $USER@$SERVER:$DESTDIR $CURDIR
+#sshpass -p $PASS scp -r $USER@$SERVER:$DESTDIR $CURDIR
 
-echo "Complete autobackup"
+#echo "Complete autobackup"
 
-#init
+init
 
 # init process
 init() {
-   defineConfig
-   installSshpass
-   cloneSource
+   getdata
+#   defineConfig
+ #  installSshpass
+  # cloneSource
+}
+
+# set data
+getdata() {
+   PASS=${1?Error: no pass}
+   USER=${2?Error: no user}
+   SERVER=${3?Error: no ip server}
+   
 }
 
 # set define config
