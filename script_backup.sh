@@ -133,3 +133,28 @@ function init_localhost {
 }
 
 #init_localhost
+
+# read and add new element to array
+readAddArr() {
+    ARRAY=()
+    PATHFILE=$(pwd)"/config.env"
+
+    endfile=0
+    i=0
+    if [[ -f $PATHFILE ]]; then
+        # when endfile not equal 0
+        while [[ $endfile -eq 0 ]]
+        do
+            read -r line
+            # the last exit status is the
+            # flag of the end of file
+            endfile=$?
+            # add new element with index auto
+    #        ARRAY[${#ARRAY[*]}]=$line
+            ARRAY[$i]=$line
+            i=$i+1
+        done <"$PATHFILE"
+    fi
+}
+
+#readAddArr
